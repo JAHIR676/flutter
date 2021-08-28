@@ -1,3 +1,4 @@
+import 'package:first_app/utils/routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -20,11 +21,11 @@ class _SignUpPageState extends State<SignUpPage> {
       color: Colors.white,
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(14.0),
           child: Column(
             children: [
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Form(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -33,11 +34,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: [
                     Text(
                       "Create An Account",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue),
                     ),
                     SizedBox(
-                      height: 70,
+                      height: 50,
                     ),
                     TextFormField(
                       controller: nameController,
@@ -110,6 +113,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   borderRadius: BorderRadius.circular(15.0),
                   child: InkWell(
                     onTap: () {
+                      Navigator.pushNamed(context, MyRoutes.loginRoute);
                       setState(() {
                         formkey.currentState!.validate();
                       });
@@ -133,17 +137,55 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               Row(
                 children: [
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16.0, left: 45.0),
+                      child: Icon(
+                        Icons.facebook,
+                        size: 50,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16.0, left: 200.0),
+                      child: Icon(
+                        Icons.mail,
+                        size: 50,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
                   Padding(
-                      padding: EdgeInsets.all(60.0),
-                      child: Container(
-                        width: 40,
-                        height: 30,
-                        color: Colors.deepPurple,
-                      )),
-                  Padding(
-                    padding: EdgeInsets.all(50.0),
-                    child: Container(
-                        width: 40, height: 30, color: Colors.deepPurple),
+                    padding: const EdgeInsets.only(top: 0.0, left: 10),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Signup with Facebook",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 70.0),
+                          child: Text(
+                            "Signup with Google",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

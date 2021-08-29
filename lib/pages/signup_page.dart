@@ -2,6 +2,7 @@ import 'package:first_app/utils/routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -10,10 +11,15 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  GlobalKey<FormState> formkey = new GlobalKey<FormState>();
+  final _formkey = new GlobalKey<FormState>();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   final nameController = TextEditingController();
+  moveToHome() async {
+    if (_formkey.currentState!.validate()) {
+      Navigator.pushNamed(context, MyRoutes.loginRoute);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 30,
               ),
               Form(
-                autovalidateMode: AutovalidateMode.always,
-                key: formkey,
+                key: _formkey,
                 child: Column(
                   children: [
                     Text(
@@ -43,6 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       height: 50,
                     ),
                     TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       controller: nameController,
                       keyboardType: TextInputType.text,
                       validator: (value) {
@@ -63,6 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 15),
                     TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Enter Your Name";
@@ -81,6 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 15),
                     TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: EmailValidator(errorText: "Enter Valid Email"),
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
@@ -93,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 15),
                     TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: MinLengthValidator(8,
                           errorText: "Minimum 8 Character"),
                       obscureText: true,
@@ -112,12 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(15.0),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, MyRoutes.loginRoute);
-                      setState(() {
-                        formkey.currentState!.validate();
-                      });
-                    },
+                    onTap: () => moveToHome(),
                     child: Container(
                       height: 50,
                       width: 200,
@@ -141,18 +145,18 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 16.0, left: 45.0),
                       child: Icon(
-                        Icons.facebook,
-                        size: 50,
+                        FontAwesomeIcons.facebook,
+                        size: 40,
                         color: Colors.blue,
                       ),
                     ),
                   ),
                   Container(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 16.0, left: 200.0),
+                      padding: const EdgeInsets.only(top: 16.0, left: 170.0),
                       child: Icon(
-                        Icons.mail,
-                        size: 50,
+                        FontAwesomeIcons.google,
+                        size: 40,
                         color: Colors.blue,
                       ),
                     ),

@@ -28,7 +28,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 30,
               ),
               Form(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
+                autovalidateMode: AutovalidateMode.always,
                 key: formkey,
                 child: Column(
                   children: [

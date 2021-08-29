@@ -1,5 +1,7 @@
 import 'package:first_app/utils/routes.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,6 +12,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> formkey = new GlobalKey<FormState>();
+
+  final TapGestureRecognizer _gestureRecognizer = TapGestureRecognizer()
+    ..onTap = () {
+      debugPrint("Jahir");
+    };
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -34,8 +42,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
+                  Form(
                     child: TextFormField(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -45,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.only(top: 20.0),
                     child: TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -56,9 +63,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   InkWell(
+                    splashColor: Colors.purple[200],
                     onTap: () {
                       Navigator.pushNamed(context, MyRoutes.homeRoute);
                       setState(() {
@@ -93,30 +101,26 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            Row(
-              children: [
-                Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 80.0, left: 45.0),
-                    child: Icon(
-                      Icons.facebook,
-                      size: 50,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-                Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 80.0, left: 200.0),
-                    child: Icon(
-                      Icons.mail,
-                      size: 50,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ],
-            )
+            Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Container(
+                    child: RichText(
+                  text: TextSpan(
+                      text: "Don't have an account? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                      children: [
+                        TextSpan(
+                            text: "Register",
+                            style: TextStyle(
+                                color: Colors.deepPurple,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold))
+                      ],
+                      recognizer: _gestureRecognizer),
+                ))),
           ],
         ),
       ),

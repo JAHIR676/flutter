@@ -1,4 +1,3 @@
-import 'package:first_app/pages/create_account.dart';
 import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/pages/login_page.dart';
 import 'package:first_app/pages/signup_page.dart';
@@ -27,11 +26,10 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       routes: {
-        "/": (context) => SignUpPage(),
+        "/": (context) => HomePage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.signupRoute: (context) => SignUpPage(),
-        MyRoutes.createAccountRoute: (context) => CreateAccont(),
       },
     );
   }

@@ -175,7 +175,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             alignment: PlaceholderAlignment.middle)
                       ],
-                      recognizer: _gestureRecognizer)),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushNamed(context, MyRoutes.signupRoute);
+                        })),
             )
           ],
         ),

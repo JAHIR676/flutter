@@ -13,21 +13,23 @@ class MyDrawer extends StatelessWidget {
           color: Colors.blue[800],
           child: ListView(
             children: [
-              ListTile(
-                leading: Icon(
-                  Icons.home,
-                  color: Colors.white,
+              InkWell(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Home",
+                    textScaleFactor: 1.3,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  },
                 ),
-                title: Text(
-                  "Home",
-                  textScaleFactor: 1.3,
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                hoverColor: Colors.white,
-                onTap: () {
-                  Navigator.pushNamed(context, MyRoutes.homeRoute);
-                },
+                hoverColor: Colors.white70,
               ),
               Divider(
                 color: Colors.white,
@@ -65,7 +67,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text(
-                  "Sales Zone",
+                  "Offer Zone",
                   textScaleFactor: 1.1,
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),

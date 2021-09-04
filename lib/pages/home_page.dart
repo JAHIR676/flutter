@@ -15,49 +15,97 @@ class _HomePageState extends State<HomePage> {
   bool isSearching = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[800],
-        title: !isSearching
-            ? Text(
-                "Shoppe",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              )
-            : TextField(
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintText: "Search Products Here",
-                  hintStyle: TextStyle(color: Colors.white),
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue[800],
+          title: !isSearching
+              ? Text(
+                  "Shoppe",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                )
+              : TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Search Products Here",
+                    hintStyle: TextStyle(color: Colors.white),
+                  ),
                 ),
-              ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              setState(() {
-                this.isSearching = !this.isSearching;
-              });
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              icon: Icon(FontAwesomeIcons.cartPlus),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
               onPressed: () {
-                setState(() {});
+                setState(() {
+                  this.isSearching = !this.isSearching;
+                });
               },
             ),
-          )
-        ],
-      ),
-      body: Center(
-        child: Text(
-          "Welcome flutter ",
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.cartPlus),
+                onPressed: () {
+                  setState(() {});
+                },
+              ),
+            )
+          ],
+          bottom: TabBar(
+            isScrollable: true,
+            indicatorColor: Colors.white,
+            indicatorWeight: 6.0,
+            onTap: (index) {
+              setState(() {});
+            },
+            tabs: [
+              Tab(
+                child: Container(
+                  child: Text(
+                    "Home",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  child: Text(
+                    "Men's",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  child: Text(
+                    "Women's",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  child: Text(
+                    "Mobiles",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  child: Text(
+                    "Household",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
+        drawer: MyDrawer(),
+        bottomNavigationBar: MyBtmNavBar(),
       ),
-      drawer: MyDrawer(),
-      bottomNavigationBar: MyBtmNavBar(),
     );
   }
 }

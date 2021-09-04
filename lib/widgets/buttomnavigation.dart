@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyBtmNavBar extends StatefulWidget {
@@ -22,17 +23,17 @@ class _MyBtmNavBarState extends State<MyBtmNavBar> {
       items: [
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.category,
               color: Colors.blue,
             ),
-            label: ("Home"),
+            label: ("Categories"),
             backgroundColor: Colors.blue),
         BottomNavigationBarItem(
             icon: Icon(
               Icons.shop,
               color: Colors.red,
             ),
-            label: ("Shop"),
+            label: ("Orders"),
             backgroundColor: Colors.blue),
         BottomNavigationBarItem(
             icon: Icon(
@@ -43,10 +44,10 @@ class _MyBtmNavBarState extends State<MyBtmNavBar> {
             backgroundColor: Colors.white),
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.settings,
+              Icons.commute,
               color: Colors.green,
             ),
-            label: ("Help"),
+            label: ("Community"),
             backgroundColor: Colors.blue),
       ],
       onTap: (index) {
